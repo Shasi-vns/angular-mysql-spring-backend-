@@ -43,6 +43,8 @@ public class SecurityConfig {
         .authorizeHttpRequests()
         .requestMatchers("/authenticate")
         .permitAll()
+        .requestMatchers("/selfRegister").permitAll()
+        .requestMatchers("/users","/addUser").hasAnyAuthority("ADMIN")
         .requestMatchers("/employee").hasAnyAuthority("ADMIN","USER","CREATER")
         .requestMatchers("/editEmp").hasAnyAuthority("ADMIN")
 //        .requestMatchers("/employees/{id}").hasAnyAuthority("ADMIN")
@@ -57,7 +59,6 @@ public class SecurityConfig {
         .authenticationProvider(authenticationProvider())
         .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
         .formLogin();
-
          return http.build();
     }
 

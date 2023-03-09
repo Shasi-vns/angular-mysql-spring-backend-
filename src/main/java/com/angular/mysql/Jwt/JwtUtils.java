@@ -29,6 +29,9 @@ public class JwtUtils implements UserDetailsService {
         String newGeneratedToken = jwtService.generateToken(authRequest.getUsername());
 
         User user = up.findByName(userName);
+        if (user == null) {
+        	user = up.getUserByMobile(userName);
+        }
         return new JwtResponse(user, newGeneratedToken);
     }
 
