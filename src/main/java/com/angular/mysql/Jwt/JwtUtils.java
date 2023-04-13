@@ -33,6 +33,7 @@ public class JwtUtils implements UserDetailsService {
         	user = up.getUserByMobile(userName);
         }
         return new JwtResponse(user, newGeneratedToken);
+        
     }
 
 	

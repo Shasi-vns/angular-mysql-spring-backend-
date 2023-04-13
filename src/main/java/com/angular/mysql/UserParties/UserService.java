@@ -1,5 +1,7 @@
 package com.angular.mysql.UserParties;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +34,19 @@ public class UserService {
 		}
 		
 		return u.getUsername();
+	}
+	
+	public void setLastLoginDate(String a) {
+		
+		User u = up.findByName(a);
+		if (u==null) {
+		     u = up.getUserByMobile(a);   
+		}
+
+		Date dt = new Date(System.currentTimeMillis());
+		SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+		u.setLoginDate( "Last Login : "+ft.format(dt));
+		up.save(u);
 	}
 	
 
