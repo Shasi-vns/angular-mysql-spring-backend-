@@ -18,7 +18,12 @@ public class UserInfoUserDetailsService implements UserDetailsService{
 	    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 	        User userInfo = repository.findByName(username);
 	        if(userInfo== null){
+	        	
+	        	userInfo = repository.getUserByMobile(username);
+	        	if(userInfo == null) {
 	            throw new UsernameNotFoundException("could not find user");
+	        	}
+	        	return new UserInfoUserDetails(userInfo);
 	        }
 
 	        return new UserInfoUserDetails(userInfo);

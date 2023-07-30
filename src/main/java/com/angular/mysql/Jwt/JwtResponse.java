@@ -10,6 +10,7 @@ public class JwtResponse {
     public JwtResponse(User user, String jwtToken) {
         this.user = user;
         this.jwtToken = jwtToken;
+        
     }
     
     

@@ -1,5 +1,8 @@
 package com.angular.mysql.UserParties;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,6 +30,15 @@ public class User {
 		private String username;
 		private String password;
 		private String role = "USER";
+		private String loginDate;
+		
+		
+		public String getLoginDate() {
+			return loginDate;
+		}
+		public void setLoginDate(String loginDate) {
+			this.loginDate = loginDate;
+		}
 		
 		public Integer getId() {
 			return id;
