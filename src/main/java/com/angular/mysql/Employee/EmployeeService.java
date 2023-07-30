@@ -1,6 +1,7 @@
 package com.angular.mysql.Employee;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,14 @@ public class EmployeeService {
 		return empRep.findAll();
 	}
 	
-	public Employee getEmployeebyId(Integer id){
-		return empRep.getById(id);
+	public Optional<Employee> getEmployeebyId(Integer id){
+		Optional<Employee> emp = empRep.findById(id);
+		if(emp.isPresent()){
+			return emp;
+		}
+		else{
+			return null;
+		}
 	}
 	
 	
