@@ -1,6 +1,7 @@
 package com.angular.mysql.Employee;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -69,8 +70,8 @@ public class Controller {
 	
 	
 	@GetMapping("/employee/{id}")
-    public ResponseEntity<Employee> getemp(@PathVariable("id") Integer id){
-		Employee emp = empSer.getEmployeebyId(id);
+    public ResponseEntity<Optional<Employee>> getemp(@PathVariable("id") Integer id){
+		Optional<Employee> emp = empSer.getEmployeebyId(id);
 		return new ResponseEntity<>(emp,HttpStatus.OK);
        
     }

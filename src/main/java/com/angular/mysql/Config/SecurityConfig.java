@@ -47,7 +47,7 @@ public class SecurityConfig {
         .requestMatchers("/users","/addUser").hasAnyAuthority("ADMIN")
         .requestMatchers("/employee").hasAnyAuthority("ADMIN","USER","CREATER")
         .requestMatchers("/editEmp").hasAnyAuthority("ADMIN")
-//        .requestMatchers("/employees/{id}").hasAnyAuthority("ADMIN")
+        .requestMatchers("/employee/{id}").hasAnyAuthority("ADMIN")
 //        .requestMatchers("/user")
 //        .permitAll()
         .anyRequest()
